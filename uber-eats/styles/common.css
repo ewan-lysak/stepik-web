@@ -37,7 +37,7 @@ body {
     right: 16px;
     width: 80px;
     height: 80px;
-    background-image: url("/assets/images/btn-up.svg");
+    background-image: url("../assets/images/btn-up.svg");
     border: none;
 }
 
