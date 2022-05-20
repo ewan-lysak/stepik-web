@@ -1,0 +1,24 @@
+.par{
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+h1{
+    font-family: Arial;
+    padding: 5px 20 px;
+    font-size: 32pt;
+}
+h2{
+    font-family: Arial;
+    padding: 5px 20 px;
+}
+table, td, th {
+    border: 1px solid black;
+ }
+ .pod{
+     font-style: italic;
+ }
+ figure {
+     float: right;
+ }

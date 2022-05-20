@@ -1,0 +1,175 @@
+/* Global */
+
+body {
+    margin: 0px;
+}
+
+
+
+/* Header */
+
+.header {
+    background-color: white;
+
+    position: sticky;
+    top: 0;
+    background: #FFFFFF;
+    box-shadow: 0px 0px 16px rgba(38, 38, 38, 0.16)
+}
+
+.button-1 {
+    background-color: white;
+    width: 78px;
+    height: 40px;
+    margin: 27px;
+    border: 1px solid #E0E0E0;
+    font-family: Roboto;
+    margin-top: 16px;
+    margin-bottom: 16px;
+    margin-right: 16px;
+}
+
+/* Footer */
+
+.btn-up {
+    position: fixed;
+    bottom: 24px;
+    right: 16px;
+    width: 80px;
+    height: 80px;
+    background-image: url("/assets/images/btn-up.svg");
+    border: none;
+}
+
+.footer {
+    background-color: #262626;
+    padding-top: 56px;
+
+}
+
+.card:hover {
+    background-color: rgba(117, 117, 117, 0.04);
+}
+
+
+.wrapper-language {
+    display: flex;
+}
+
+.footer-section-1 {
+    margin-top: 17px;
+    border-top: 2px solid #3B3B3B;
+    border-bottom: 2px solid #3B3B3B;
+
+}
+
+.columns {
+    padding-top: 32px;
+    padding-bottom: 48px;
+    max-width: 80%;
+}
+
+.social-img {
+    padding-top: 33px;
+}
+
+.footer-text {
+    font-family: Roboto;
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 15px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: #ececec;
+}
+
+.footer-apps {
+    padding-top: 41px;
+    border-bottom: 2px solid #3B3B3B;
+    display: flex;
+    justify-content: center;
+    padding-bottom: 40px;
+}
+
+.image-app {
+    padding-right: 41px;
+}
+
+.footer-bottom {
+    padding-top: 17px;
+    padding-bottom: 40px;
+}
+
+.text-padding {
+    padding-top: 23px;
+    margin: 0;
+}
+
+
+
+#shape {
+    width: 14px;
+    height: 14px;
+    padding-top: 12px;
+    padding-bottom: 16px;
+    padding-left: 106px;
+    padding-right: 6px;
+}
+
+.images-world {
+    margin-top: 12px;
+    margin-bottom: 12px;
+    margin-right: 16px;
+    margin-left: 16px;
+}
+
+.social-img {
+    padding-top: 33px;
+}
+
+.footer-text {
+    font-family: Roboto;
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 15px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: #ececec;
+}
+
+.footer-apps {
+    padding-top: 41px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+    display: flex;
+    justify-content: center;
+    padding-bottom: 40px;
+}
+
+.image-app {
+    padding-right: 41px;
+}
+
+.columns {
+    padding-top: 32px;
+    padding-bottom: 48px;
+    max-width: 80%;
+}
+
+
+
+.header-flex {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+}
+
+.header-flex-1 {
+    display: flex;
+    align-items: center;
+}
+
+.logo-1 {
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
