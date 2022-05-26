@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://unpkg.com/flexboxgrid2@7.2.1/flexboxgrid2.min.css">
     <link rel="stylesheet" href="styles\tractir-pushkin.css">
     <link rel="stylesheet" href="styles\common.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -12,11 +13,12 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="https://unpkg.com/flexboxgrid2@7.2.1/flexboxgrid2.min.css">
+
     <title>Трактир «Пушкин»</title>
 </head>
 
 <body>
+
     <header class="header">
         <div class="container">
             <div class="header-flex">
@@ -31,7 +33,7 @@
                     </form>
 
 
-                    <div class="pic-basket">
+                    <div>
                         <img src="assets\images\basket.svg" alt="">
                     </div>
                 </div>
@@ -46,15 +48,33 @@
 
 
 
-    <section class="section-2-1">
+    <section class="section-fon-card">
         <div class="container">
 
-            <div class="section-2-1-card col-lg-5 col-md-7 col-xs-12">
+            <div class="wrapper-card-info">
 
+                <div class="card-info">
+
+                    <div class="card-info-inner">
+
+                        <h1 class="name-of-rest">Трактир «Пушкин»</h1>
+
+                        <div class="info-and-btn">
+
+                            <p class="info">₽₽₽ • Европейская</p>
+
+                            <button class="btn-in-card-info">
+                                <b id="text-in-btn-in-card-info">40 - 50 мин</b>
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
 
             </div>
         </div>
-
     </section>
 
 
@@ -62,16 +82,16 @@
 
 
 
-    <nav class="nav">
-        <div class="nav-wrapper container">
-            <p class="zakuski nav-inner">Закуски</p>
-            <p class="nav-inner">Салаты</p>
-            <p class="nav-inner">Супы</p>
-            <p class="nav-inner">Горячие блюда</p>
-            <p class="nav-inner">Гарниры</p>
-            <p class="nav-inner">Десерты</p>
+    <div class="tab">
+        <div class="tab-wrapper container">
+            <p class="tab-inner">Закуски</p>
+            <p class="tab-inner">Салаты</p>
+            <p class="tab-inner">Супы</p>
+            <p class="tab-inner">Горячие блюда</p>
+            <p class="tab-inner">Гарниры</p>
+            <p class="tab-inner">Десерты</p>
         </div>
-    </nav>
+    </div>
 
     <section class="section-card container">
 
@@ -83,9 +103,9 @@
                 <div class="card">
 
                     <div class="wrapper-text">
-                        <div class="card-text-inner">
+                        <div class="card-text-inner card-text-inner-1">
                             <div>
-                                <h3 class="name">Сельдь на бородинском хлебе </h3>
+                                <h3 id="name">Сельдь на бородинском хлебе </h3>
                                 <p class="composition">С яйцом и огурцом</p>
                             </div>
                             <div>
@@ -94,7 +114,7 @@
                         </div>
                     </div>
 
-                    <div class="card-pic">
+                    <div>
                         <img src="assets\images\seld.svg" id="card-pic-id" alt="">
                     </div>
 
@@ -106,7 +126,7 @@
                     <div class="wrapper-text">
                         <div class="card-text-inner">
                             <div>
-                                <h3 class="name">Соленья ассорти</h3>
+                                <h3 id="name">Соленья ассорти</h3>
 
                             </div>
                             <div>
@@ -127,7 +147,7 @@
                     <div class="wrapper-text">
                         <div class="card-text-inner">
                             <div>
-                                <h3 class="name">Грибы маринованные</h3>
+                                <h3 id="name">Грибы маринованные</h3>
 
                             </div>
                             <div>
@@ -148,7 +168,7 @@
                     <div class="wrapper-text">
                         <div class="card-text-inner">
                             <div>
-                                <h3 class="name">Сало домашнее с горчицей </h3>
+                                <h3 id="name">Сало домашнее с горчицей </h3>
 
                             </div>
                             <div>
@@ -169,7 +189,7 @@
                     <div class="wrapper-text">
                         <div class="card-text-inner">
                             <div>
-                                <h3 class="name">Малосольная семга</h3>
+                                <h3 id="name">Малосольная семга</h3>
 
                             </div>
                             <div>
@@ -190,7 +210,7 @@
                     <div class="wrapper-text">
                         <div class="card-text-inner">
                             <div>
-                                <h3 class="name">Язык говяжий с хреном </h3>
+                                <h3 id="name">Язык говяжий с хреном </h3>
 
                             </div>
                             <div>
@@ -210,6 +230,7 @@
 
 
 
+
     <footer class="footer">
         <div class="container">
 
@@ -218,7 +239,7 @@
             <div class="footer-section-1">
 
 
-                <div class="columns ">
+                <div class="columns">
                     <div class="column-1">
 
                         <div class="wrapper-language">
@@ -229,7 +250,9 @@
                                 <div class="images-world">
                                     <img src="assets\images\world.svg" alt="">
                                 </div>
-                                <p>Русский</p>
+
+                                <p class="russian">Русский</p>
+
                                 <img src="assets\images\Shape.svg" id="shape" alt="">
                             </div>
                         </div>
@@ -240,14 +263,14 @@
 
                     </div>
 
-                    <div class="column-2 footer-text">
-                        <p class="text-padding">Об UberEats</p>
+                    <div class="footer-text">
+                        <p class="text-padding-top">Об UberEats</p>
                         <p class="text-padding">Станьте партнёром по доставке</p>
                         <p class="text-padding">Станьте парнёром-рестораном</p>
                     </div>
 
-                    <div class="column-3 footer-text">
-                        <p class="text-padding">Все города</p>
+                    <div class="footer-text">
+                        <p class="text-padding-top">Все города</p>
                         <p class="text-padding">Цены</p>
                         <p class="text-padding">Помощь</p>
                         <p class="text-padding">FAQs</p>
@@ -258,12 +281,12 @@
             </div>
 
             <div class="footer-apps">
-                <img class="image-app" src="assets\images\app-store.svg" alt="">
+                <img class="image-app" src="assets\images\app-store .svg" alt="">
                 <img src="assets\images\google-play.svg" alt="">
             </div>
 
             <div class="footer-bottom footer-text">
-                <p class="text-padding">© 2017 Uber Technologies Inc.</p>
+                <p class="text-padding-top">© 2017 Uber Technologies Inc.</p>
                 <p class="text-padding">Обработка персональных данных.</p>
                 <p class="text-padding">Пользовательское соглашение</p>
             </div>
@@ -273,10 +296,11 @@
     </footer>
 
     <a href="#">
-        <button class="btn-up">
+        <button id="btn-up">
 
         </button>
     </a>
 </body>
+<script src="/scripts/scrole.js"></script>
 
 </html>
