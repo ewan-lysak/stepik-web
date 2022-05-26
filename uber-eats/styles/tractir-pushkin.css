@@ -264,6 +264,12 @@
     margin-bottom: 40px;
 }
 
+.card-food-inner-flex {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
 .card:hover {
     background-color: rgba(117, 117, 117, 0.04);
 }
@@ -286,14 +292,7 @@
     color: #626262;
 }
 
-.price {
-    font-family: Roboto;
-    font-size: 15px;
-    font-weight: 500;
-    line-height: 21px;
-    letter-spacing: 0em;
-    text-align: left;
-}
+
 
 .col-xs-12 {
     padding-left: 0;
@@ -329,6 +328,27 @@
         margin-right: 16px;
     }
 
+    .price {
+        font-family: Roboto;
+        font-size: 15px;
+        font-weight: 500;
+        line-height: 21px;
+        letter-spacing: 0em;
+        text-align: left;
+        margin-bottom: 0;
+        margin-top: 70px;
+    }
+
+    .price-1 {
+        font-family: Roboto;
+        font-size: 15px;
+        font-weight: 500;
+        line-height: 21px;
+        letter-spacing: 0em;
+        text-align: left;
+        margin-bottom: 0;
+        margin-top: 50px;
+    }
 
 
 }
@@ -357,6 +377,27 @@
         margin-bottom: 32px;
     }
 
+    .price {
+        font-family: Roboto;
+        font-size: 15px;
+        font-weight: 500;
+        line-height: 21px;
+        letter-spacing: 0em;
+        text-align: left;
+        margin-bottom: 0;
+        margin-top: 70px;
+    }
+
+    .price-1 {
+        font-family: Roboto;
+        font-size: 15px;
+        font-weight: 500;
+        line-height: 21px;
+        letter-spacing: 0em;
+        text-align: left;
+        margin-bottom: 0;
+        margin-top: 50px;
+    }
 
 
 }
@@ -395,6 +436,27 @@
         text-overflow: ellipsis;
     }
 
+    .price {
+        font-family: Roboto;
+        font-size: 15px;
+        font-weight: 500;
+        line-height: 21px;
+        letter-spacing: 0em;
+        text-align: left;
+        margin-bottom: 0;
+        margin-top: 35px;
+    }
+
+    .price-1 {
+        font-family: Roboto;
+        font-size: 15px;
+        font-weight: 500;
+        line-height: 21px;
+        letter-spacing: 0em;
+        text-align: left;
+        margin-bottom: 0;
+        margin-top: 15px;
+    }
 
 
     .card-text-inner-1 {
