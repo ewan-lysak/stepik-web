@@ -325,8 +325,8 @@
     }
 
     .card {
-        width: 470px;
         height: 160px;
+        margin-right: 16px;
     }
 
 
