@@ -10,9 +10,7 @@ a {
     text-decoration: none;
 }
 
-html {
-    scroll-behavior: smooth;
-}
+
 
 
 h1 {
@@ -36,6 +34,14 @@ p {
         padding-left: 0;
         padding-right: 0;
     }
+}
+
+@media screen and (min-width: 320px) and (max-width: 767px) {
+
+    .container {
+        padding-right: 4px;
+    }
+
 }
 
 

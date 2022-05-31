@@ -1,1 +1,1 @@
-console.log("jffdv");
+document.getElementById(btn-up).style.visibility = "hidden";
