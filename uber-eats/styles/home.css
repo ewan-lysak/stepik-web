@@ -108,4 +108,8 @@
     .section {
         margin-bottom: 56px;
     }
+
+    .col-xs-12 {
+        padding-right: 4px;
+    }
 }

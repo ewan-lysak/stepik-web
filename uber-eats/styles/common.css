@@ -10,6 +10,9 @@ a {
     text-decoration: none;
 }
 
+.unc {
+    display: none;
+}
 
 
 
@@ -36,13 +39,7 @@ p {
     }
 }
 
-@media screen and (min-width: 320px) and (max-width: 767px) {
-
-    .container {
-        padding-right: 4px;
-    }
-
-}
+@media screen and (min-width: 320px) and (max-width: 767px) {}
 
 
 /* Header */
@@ -248,4 +245,5 @@ p {
     height: 80px;
     background-image: url("../assets/images/btn-up.svg");
     border: none;
+    border-radius: 2px;
 }
