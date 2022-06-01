@@ -12,7 +12,7 @@ function hide() {
         document.getElementById("btn-up").classList.remove('hide');
     }
   }
- 
+ hide();
   window.addEventListener("scroll", hide);
 
 
