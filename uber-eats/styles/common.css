@@ -252,6 +252,21 @@ p {
     }
 }
 
+/* .hide-2 {
+    opacity: 1;
+    animation: an 1s forwards;
+}
+
+@keyframes an {
+    100% {
+        opacity: 0;
+    }
+
+    0% {
+        opacity: 1;
+    }
+} */
+
 
 
 

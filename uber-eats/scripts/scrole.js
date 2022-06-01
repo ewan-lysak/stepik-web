@@ -5,12 +5,11 @@ function handleButtonClick() {
 document.querySelector('.btn-up').addEventListener('click', handleButtonClick);
 
 function hide() {
-    if (window.scrollY >= window.outerHeight / 1.5) {
+    if (window.scrollY >= window.outerHeight / 1.6) {
         document.getElementById("btn-up").classList.add('hide');
     }
     else {
         document.getElementById("btn-up").classList.remove('hide');
-        
     }
   }
  hide();
