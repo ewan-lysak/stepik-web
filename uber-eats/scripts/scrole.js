@@ -4,12 +4,16 @@ function handleButtonClick() {
 
 document.querySelector('.btn-up').addEventListener('click', handleButtonClick);
 
-function hideBlock() {
-    if (window.scrollY() >= 1200) {
+function hide() {
+    if (window.scrollY >= window.outerHeight / 1.5) {
         document.getElementById("btn-up").style.display = '';
     }
     else {
         document.getElementById("btn-up").style.display = 'none';
     }
   }
-  window.scroll(hideBlock);
+  hide();
+  window.addEventListener("scroll", hide);
+
+ 
+  
