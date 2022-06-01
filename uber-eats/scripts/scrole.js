@@ -6,14 +6,16 @@ document.querySelector('.btn-up').addEventListener('click', handleButtonClick);
 
 function hide() {
     if (window.scrollY >= window.outerHeight / 1.5) {
-        document.getElementById("btn-up").style.display = '';
+        document.getElementById("btn-up").classList.add('hide');
     }
     else {
-        document.getElementById("btn-up").style.display = 'none';
+        document.getElementById("btn-up").classList.remove('hide');
+        
     }
   }
-  hide();
+ hide();
   window.addEventListener("scroll", hide);
 
+
  
-  
+

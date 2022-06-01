@@ -237,7 +237,26 @@ p {
 }
 
 /*BTN-UP*/
-#btn-up {
+.hide {
+    opacity: 1;
+    animation: ani 1s forwards;
+}
+
+@keyframes ani {
+    100% {
+        opacity: 1;
+    }
+
+    0% {
+        opacity: 0;
+    }
+}
+
+
+
+
+
+.btn-up {
     position: fixed;
     bottom: 24px;
     right: 16px;
@@ -246,4 +265,5 @@ p {
     background-image: url("../assets/images/btn-up.svg");
     border: none;
     border-radius: 2px;
+    opacity: 0;
 }
