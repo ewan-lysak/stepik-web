@@ -223,7 +223,6 @@
 
 .section-card {
     margin-top: 56px;
-    margin-bottom: 80px;
 }
 
 .dishes {
@@ -319,6 +318,10 @@
         display: none;
     }
 
+    .section-card {
+        margin-bottom: 40px;
+    }
+
 
     .name {
         font-family: Roboto;
@@ -366,6 +369,10 @@
 
     .line {
         display: none;
+    }
+
+    .section-card {
+        margin-bottom: 16px;
     }
 
     .name {
@@ -470,7 +477,7 @@
     }
 
     .section-card {
-        margin-bottom: 0;
+        margin-bottom: 8px;
     }
 
     .card {
