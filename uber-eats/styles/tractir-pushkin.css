@@ -29,7 +29,7 @@
     border: none;
 }
 
-#text-in-btn-in-card-info {
+.text-in-btn-in-card-info {
     font-family: Roboto;
     font-size: 12px;
     font-weight: 400;
@@ -314,7 +314,7 @@
     }
 
 
-    #name {
+    .name {
         font-family: Roboto;
         font-size: 16px;
         font-weight: 400;
@@ -362,7 +362,7 @@
         display: none;
     }
 
-    #name {
+    .name {
         font-family: Roboto;
         font-size: 16px;
         font-weight: 400;
@@ -421,7 +421,7 @@
         padding-top: 56px;
     }
 
-    #name {
+    .name {
         font-family: Roboto;
         font-size: 14px;
         font-weight: 400;
@@ -472,7 +472,7 @@
         margin-bottom: 16px;
     }
 
-    #card-pic-id {
+    .card-pic-id {
 
         height: 102px;
     }

@@ -24,6 +24,14 @@ p {
     margin: 0;
 }
 
+li {
+    list-style-type: none;
+}
+
+ul {
+    margin: 0;
+}
+
 @media screen and (min-width: 1123px) {
 
     .container {
@@ -146,7 +154,7 @@ p {
     padding-bottom: 12px;
 }
 
-#shape {
+.shape {
     width: 14px;
     height: 14px;
     padding-top: 12px;
