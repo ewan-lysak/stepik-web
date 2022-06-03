@@ -189,6 +189,12 @@
     margin-right: 40px;
 }
 
+.tab-inner-1 {
+    margin: 0px;
+    margin-right: 40px;
+    color: #327430;
+}
+
 .tab-inner:hover {
     color: #327430;
 }
