@@ -147,7 +147,11 @@ ul {
     margin-bottom: 12px;
     margin-right: 16px;
     margin-left: 16px;
+    height: 16px;
+    width: 16px;
 }
+
+
 
 .russian {
     padding-top: 12px;
@@ -155,9 +159,9 @@ ul {
 }
 
 .shape {
+    height: 8px;
     width: 14px;
-    height: 14px;
-    padding-top: 12px;
+    padding-top: 16px;
     padding-bottom: 16px;
     padding-left: 106px;
     padding-right: 6px;
@@ -271,7 +275,7 @@ ul {
     right: 16px;
     width: 80px;
     height: 80px;
-    background-image: url("../assets/images/btn-up.svg");
+    background-image: url("../assets/icons/btn-up.svg");
     border: none;
     border-radius: 2px;
     opacity: 0;
