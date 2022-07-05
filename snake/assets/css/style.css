@@ -1,0 +1,11 @@
+#canvas {
+    margin-left: 600px;
+}
+
+#appleCount {
+    position: absolute;
+    top: 25px;
+    left: 80px;
+    color: silver;
+    font-size: 37px;
+}
