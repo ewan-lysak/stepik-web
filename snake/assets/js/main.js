@@ -4,6 +4,7 @@ let grid = 32;
 let count = 0;
 let countSpeed = 0;
 let appleCount = 0;
+let countGame = 0;
 let snake = {
   x: 320,
   y: 320,
@@ -16,59 +17,46 @@ let apple = {
   x: 320,
   y: 320,
 };
+
 function rand(min, max) {
   return Math.floor(Math.random() * (max - min)) + min;
 }
-function loop() {
-  const img = new Image();
-  img.src = `assets/img/ground.png`; // изображение для поля
-  img.onload = function () {
-    let pattern = context.createPattern(img, "no-repeat");
-    context.fillStyle = pattern;
-    context.fillRect(10, 10, 620, 620);
-  };
 
-  requestAnimationFrame(loop);
-  if (++count <= 3) {
-    // возврат пустого значения
+function loop() {
+  let ctrl;
+  let z;
+  window.addEventListener("keydown", function (e) {
+    if (e.which === 17) {
+      ctrl = 1;
+    }
+  });
+  window.addEventListener("keydown", function (e) {
+    if (e.which === 90) {
+      z = 1;
+    }
+  });
+  alert(ctrl);
+  if (z === 1 && ctrl == 1) {
+    countGame = 0;
+  }
+  z = 0;
+  ctrl = 0;
+
+  if (countGame > 0) {
     return;
   }
-  count = 2;
+  const img = new Image();
+  img.src = `assets/img/ground.png`; // изображение для поля
+  context.drawImage(img, 0, 0);
 
-  function speed() {
-    snake.x += snake.dx;
-    snake.y += snake.dy;
-  }
-  speed();
-
-  snake.cells.unshift({ x: snake.x, y: snake.y }); // увеличение длины
-  if (snake.cells.length > snake.maxCells) {
-    snake.cells.pop();
-  }
   const fruit = new Image();
-  fruit.src = `assets/img/fruit.png`;
-  img.onload = function () {
-    let pat = context.createPattern(fruit, "no-repeat");
-    context.fillStyle = pat;
-    context.fillRect(apple.x, apple.y, grid - 1, grid - 1);
-  };
+  fruit.src = `assets/img/fruit.png`; //изображение фрукта
   context.drawImage(fruit, apple.x, apple.y, grid - 1, grid - 1);
 
-  if (snake.x < 30 || snake.y < 90 || snake.x > 550 || snake.y > 550) {
-    // смерть об стенку
-    snake.x = 288;
-    snake.y = 320;
-    snake.cells = [];
-    snake.maxCells = 1;
-    snake.dx = 0;
-    snake.dy = 0;
-    apple.x = rand(2, 14) * grid;
-    apple.y = rand(3, 13) * grid;
-    appleCount = 0;
-  }
-  context.fillStyle = "black"; //спавн змейки
+  // context.fillStyle = "red"; //спавн змейки
   snake.cells.forEach(function (cell, index) {
     context.fillRect(cell.x, cell.y, grid - 1, grid - 1);
+
     // съел яблоко
     if (cell.x === apple.x && cell.y === apple.y) {
       snake.maxCells++;
@@ -92,8 +80,73 @@ function loop() {
       }
     }
   });
+  setTimeout(loop, 100);
+  if (++count <= 3) {
+    // возврат пустого значения
+    return;
+  }
+  count = 2;
+
+  function speed() {
+    snake.x += snake.dx;
+    snake.y += snake.dy;
+  }
+  speed();
+
+  snake.cells.unshift({ x: snake.x, y: snake.y }); // увеличение длины
+  if (snake.cells.length > snake.maxCells) {
+    snake.cells.pop();
+  }
+
+  context.drawImage(fruit, apple.x, apple.y, grid - 1, grid - 1);
+
+  if (snake.x < 30) {
+    snake.dx = 0;
+    snake.dy = 0;
+    snake.x = snake.x + grid;
+    snake.cells = [];
+    snake.maxCells = 1;
+    apple.x = rand(2, 14) * grid;
+    apple.y = rand(3, 13) * grid;
+    appleCount = 0;
+    countGame++;
+  }
+  if (snake.y < 90) {
+    snake.dx = 0;
+    snake.dy = 0;
+    snake.y = snake.y + grid;
+    snake.cells = [];
+    snake.maxCells = 1;
+    apple.x = rand(2, 14) * grid;
+    apple.y = rand(3, 13) * grid;
+    appleCount = 0;
+    countGame++;
+  }
+  if (snake.x > 550) {
+    snake.dx = 0;
+    snake.dy = 0;
+    snake.x = snake.x - grid;
+    snake.cells = [];
+    snake.maxCells = 1;
+    apple.x = rand(2, 14) * grid;
+    apple.y = rand(3, 13) * grid;
+    appleCount = 0;
+    countGame++;
+  }
+  if (snake.y > 550) {
+    snake.dx = 0;
+    snake.dy = 0;
+    snake.y = snake.y - grid;
+    snake.cells = [];
+    snake.maxCells = 1;
+    apple.x = rand(2, 14) * grid;
+    apple.y = rand(3, 13) * grid;
+    appleCount = 0;
+    countGame++;
+  }
   inputAppleCount();
 }
+
 // управление
 function control() {
   document.addEventListener("keydown", function (e) {
@@ -112,6 +165,7 @@ function control() {
     }
   });
 }
+
 function inputAppleCount() {
   let current = document.getElementById("appleCount");
   current.innerHTML = appleCount;
