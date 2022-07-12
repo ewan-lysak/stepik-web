@@ -43,6 +43,16 @@ function spawn() {
     context.fillRect(snake.cells[i].x, snake.cells[i].y, grid - 1, grid - 1);
   }
 }
+function death() {
+  snake.dx = 0;
+  snake.dy = 0;
+  snake.cells = [];
+  snake.maxCells = 1;
+  apple.x = rand(2, 14) * grid;
+  apple.y = rand(3, 13) * grid;
+  appleCount = 0;
+  countGame++;
+}
 
 function deathAndApple() {
   snake.cells.forEach(function (cell, index) {
@@ -57,27 +67,10 @@ function deathAndApple() {
     for (let i = index + 1; i < snake.cells.length - 1; i++) {
       // смерть об себя
       if (cell.x === snake.cells[i + 1].x && cell.y === snake.cells[i + 1].y) {
-        snake.cells = [];
-        snake.maxCells = 1;
-        snake.dx = 0;
-        snake.dy = 0;
-        apple.x = rand(2, 14) * grid;
-        apple.y = rand(3, 13) * grid;
-        appleCount = 0;
-        countGame++;
+        death();
       }
     }
   });
-}
-function death() {
-  snake.dx = 0;
-  snake.dy = 0;
-  snake.cells = [];
-  snake.maxCells = 1;
-  apple.x = rand(2, 14) * grid;
-  apple.y = rand(3, 13) * grid;
-  appleCount = 0;
-  countGame++;
 }
 
 function spawnPic(path, x, y, length, width) {
