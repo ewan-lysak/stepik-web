@@ -1,11 +1,13 @@
-let canvas = document.getElementById("game");
-let context = canvas.getContext("2d");
-let grid = 32;
+const CANVAS = document.getElementById("game");
+const CONTEXT = CANVAS.getContext("2d");
+const GRID = 32;
+const CURRENT = document.getElementById("appleCount");
+
 let count = 0;
 let countSpeed = 0;
 let appleCount = 0;
 let countGame = 0;
-let crutch = false;
+
 let snake = {
   x: 288,
   y: 320,
@@ -14,6 +16,7 @@ let snake = {
   cells: [],
   maxCells: 1,
 };
+
 let apple = {
   x: 320,
   y: 320,
@@ -33,40 +36,41 @@ function extension() {
 
 function spawn() {
   for (let i = 0; i < snake.cells.length; i++) {
-    // спавн змейки
-
     if (i === 0) {
-      context.fillStyle = "black";
+      CONTEXT.fillStyle = "black";
     } else {
-      context.fillStyle = "green";
+      CONTEXT.fillStyle = "green";
     }
-    context.fillRect(snake.cells[i].x, snake.cells[i].y, grid - 1, grid - 1);
+    CONTEXT.fillRect(snake.cells[i].x, snake.cells[i].y, GRID - 1, GRID - 1);
   }
 }
+
 function death() {
   snake.dx = 0;
   snake.dy = 0;
   snake.cells = [];
   snake.maxCells = 1;
-  apple.x = rand(2, 14) * grid;
-  apple.y = rand(3, 13) * grid;
+  apple.x = rand(2, 14) * GRID;
+  apple.y = rand(3, 13) * GRID;
   appleCount = 0;
   countGame++;
 }
 
-function deathAndApple() {
-  snake.cells.forEach(function (cell, index) {
-    // съел яблоко
+function eatApple() {
+  snake.cells.forEach(function (cell) {
     if (cell.x === apple.x && cell.y === apple.y) {
       snake.maxCells++;
-      apple.x = rand(2, 14) * grid;
-      apple.y = rand(3, 13) * grid;
+      apple.x = rand(2, 14) * GRID;
+      apple.y = rand(3, 13) * GRID;
       appleCount++;
     }
+  });
+}
 
-    for (let i = index + 1; i < snake.cells.length - 1; i++) {
-      // смерть об себя
-      if (cell.x === snake.cells[i + 1].x && cell.y === snake.cells[i + 1].y) {
+function deathAboutYourself() {
+  snake.cells.forEach(function (cell, index) {
+    for (let i = index + 1; i < snake.cells.length; i++) {
+      if (cell.x === snake.cells[i].x && cell.y === snake.cells[i].y) {
         death();
       }
     }
@@ -75,23 +79,24 @@ function deathAndApple() {
 
 function spawnPic(path, x, y, length, width) {
   let img = new Image();
-  img.src = path; // изображение для поля
-  context.drawImage(img, x, y, length, width);
+  img.src = path;
+  CONTEXT.drawImage(img, x, y, length, width);
 }
 
 function inputAppleCount() {
-  let current = document.getElementById("appleCount");
-  current.innerHTML = appleCount;
+  CURRENT.innerHTML = appleCount;
 }
 
-document.addEventListener("keydown", function (e) {
-  if ((e.ctrlKey || e.KeyCode === 122) && countGame > 0) {
-    countGame = 0;
-    snake.x = 288;
-    snake.y = 320;
-    loop();
-  }
-});
+function ctrlZ() {
+  document.addEventListener("keydown", function (e) {
+    if ((e.ctrlKey || e.KeyCode === 122) && countGame > 0) {
+      countGame = 0;
+      snake.x = 288;
+      snake.y = 320;
+      loop();
+    }
+  });
+}
 
 function rand(min, max) {
   return Math.floor(Math.random() * (max - min)) + min;
@@ -103,10 +108,15 @@ function loop() {
   }
 
   spawnPic("assets/img/ground.png", 0, 0, 608, 608);
-  spawnPic(`assets/img/fruit.png`, apple.x, apple.y, grid - 1, grid - 1);
+
+  spawnPic(`assets/img/fruit.png`, apple.x, apple.y, GRID - 1, GRID - 1);
 
   spawn();
-  deathAndApple();
+
+  eatApple();
+
+  deathAboutYourself();
+
   setTimeout(loop, 60);
 
   if (++count <= 3) {
@@ -116,25 +126,29 @@ function loop() {
   count = 2;
 
   speed();
+
   extension();
 
   if (snake.x < 30) {
-    snake.x = snake.x + grid;
+    snake.x = snake.x + GRID;
     death();
   }
 
   if (snake.y < 90) {
-    snake.y = snake.y + grid;
+    snake.y = snake.y + GRID;
     death();
   }
+
   if (snake.x > 550) {
-    snake.x = snake.x - grid;
+    snake.x = snake.x - GRID;
     death();
   }
+
   if (snake.y > 550) {
-    snake.y = snake.y - grid;
+    snake.y = snake.y - GRID;
     death();
   }
+
   inputAppleCount();
 }
 
@@ -144,19 +158,22 @@ function control() {
     if (!countGame) {
       switch (e.which) {
         case 37:
-          snake.dx = -grid;
+          snake.dx = -GRID;
           snake.dy = 0;
           break;
+
         case 38:
-          snake.dy = -grid;
+          snake.dy = -GRID;
           snake.dx = 0;
           break;
+
         case 39:
-          snake.dx = grid;
+          snake.dx = GRID;
           snake.dy = 0;
           break;
+
         case 40:
-          snake.dy = grid;
+          snake.dy = GRID;
           snake.dx = 0;
           break;
       }
@@ -165,4 +182,7 @@ function control() {
 }
 
 loop();
+
 control();
+
+ctrlZ();
