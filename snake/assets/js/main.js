@@ -86,6 +86,20 @@ function spawnPic(path, x, y, length, width) {
   context.drawImage(img, x, y, length, width);
 }
 
+function inputAppleCount() {
+  let current = document.getElementById("appleCount");
+  current.innerHTML = appleCount;
+}
+
+document.addEventListener("keydown", function (e) {
+  if ((e.ctrlKey || e.KeyCode === 122) && countGame > 0) {
+    countGame = 0;
+    snake.x = 288;
+    snake.y = 320;
+    loop();
+  }
+});
+
 function rand(min, max) {
   return Math.floor(Math.random() * (max - min)) + min;
 }
@@ -135,35 +149,27 @@ function loop() {
 function control() {
   document.addEventListener("keydown", function (e) {
     if (!countGame) {
-      if (e.which === 37 && snake.dx === 0) {
-        snake.dx = -grid;
-        snake.dy = 0;
-      } else if (e.which === 38 && snake.dy === 0) {
-        snake.dy = -grid;
-        snake.dx = 0;
-      } else if (e.which === 39 && snake.dx === 0) {
-        snake.dx = grid;
-        snake.dy = 0;
-      } else if (e.which === 40 && snake.dy === 0) {
-        snake.dy = grid;
-        snake.dx = 0;
+      let a = e.which;
+      switch (a) {
+        case 37:
+          snake.dx = -grid;
+          snake.dy = 0;
+          break;
+        case 38:
+          snake.dy = -grid;
+          snake.dx = 0;
+          break;
+        case 39:
+          snake.dx = grid;
+          snake.dy = 0;
+          break;
+        case 40:
+          snake.dy = grid;
+          snake.dx = 0;
+          break;
       }
     }
   });
-}
-
-document.addEventListener("keydown", function (e) {
-  if ((e.ctrlKey || e.KeyCode === 122) && countGame > 0) {
-    countGame = 0;
-    snake.x = 288;
-    snake.y = 320;
-    loop();
-  }
-});
-
-function inputAppleCount() {
-  let current = document.getElementById("appleCount");
-  current.innerHTML = appleCount;
 }
 
 loop();
