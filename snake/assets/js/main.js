@@ -142,8 +142,7 @@ function loop() {
 function control() {
   document.addEventListener("keydown", function (e) {
     if (!countGame) {
-      let a = e.which;
-      switch (a) {
+      switch (e.which) {
         case 37:
           snake.dx = -grid;
           snake.dy = 0;
