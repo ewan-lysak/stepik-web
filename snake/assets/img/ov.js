@@ -69,20 +69,10 @@ function deathAndApple() {
     }
   });
 }
-function death() {
-  snake.dx = 0;
-  snake.dy = 0;
-  snake.cells = [];
-  snake.maxCells = 1;
-  apple.x = rand(2, 14) * grid;
-  apple.y = rand(3, 13) * grid;
-  appleCount = 0;
-  countGame++;
-}
 
-function spawnPic(path, x, y, length, width) {
-  let img = new Image();
-  img.src = path; // изображение для поля
+function spawnPic(way, x, y, length, width) {
+  const img = new Image();
+  img.src = way; // изображение для поля
   context.drawImage(img, x, y, length, width);
 }
 
@@ -94,13 +84,11 @@ function loop() {
   if (countGame > 0) {
     return;
   }
-
   spawnPic("assets/img/ground.png", 0, 0, 608, 608);
   spawnPic(`assets/img/fruit.png`, apple.x, apple.y, grid - 1, grid - 1);
-
   spawn();
   deathAndApple();
-  setTimeout(loop, 60);
+  setTimeout(loop, 30);
 
   if (++count <= 3) {
     // возврат пустого значения
@@ -111,22 +99,51 @@ function loop() {
   speed();
   extension();
 
-  if (snake.x < 30) {
-    snake.x = snake.x + grid;
-    death();
-  }
+  context.drawImage(fruit, apple.x, apple.y, grid - 1, grid - 1);
 
+  if (snake.x < 30) {
+    snake.dx = 0;
+    snake.dy = 0;
+    snake.x = snake.x + grid;
+    snake.cells = [];
+    snake.maxCells = 1;
+    apple.x = rand(2, 14) * grid;
+    apple.y = rand(3, 13) * grid;
+    appleCount = 0;
+    countGame++;
+  }
   if (snake.y < 90) {
+    snake.dx = 0;
+    snake.dy = 0;
     snake.y = snake.y + grid;
-    death();
+    snake.cells = [];
+    snake.maxCells = 1;
+    apple.x = rand(2, 14) * grid;
+    apple.y = rand(3, 13) * grid;
+    appleCount = 0;
+    countGame++;
   }
   if (snake.x > 550) {
+    snake.dx = 0;
+    snake.dy = 0;
     snake.x = snake.x - grid;
-    death();
+    snake.cells = [];
+    snake.maxCells = 1;
+    apple.x = rand(2, 14) * grid;
+    apple.y = rand(3, 13) * grid;
+    appleCount = 0;
+    countGame++;
   }
   if (snake.y > 550) {
+    snake.dx = 0;
+    snake.dy = 0;
     snake.y = snake.y - grid;
-    death();
+    snake.cells = [];
+    snake.maxCells = 1;
+    apple.x = rand(2, 14) * grid;
+    apple.y = rand(3, 13) * grid;
+    appleCount = 0;
+    countGame++;
   }
   inputAppleCount();
 }
