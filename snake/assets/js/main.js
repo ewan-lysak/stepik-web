@@ -1,12 +1,11 @@
-const CANVAS = document.getElementById("game");
-const CONTEXT = CANVAS.getContext("2d");
 const GRID = 32;
-const CURRENT = document.getElementById("appleCount");
 
-let count = 0;
-let countSpeed = 0;
+let canvas = document.getElementById("game");
+let context = canvas.getContext("2d");
+let current = document.getElementById("appleCount");
 let appleCount = 0;
-let countGame = 0;
+let countGame = false;
+let gameLoop = null;
 
 let snake = {
   x: 288,
@@ -34,14 +33,14 @@ function extension() {
   }
 }
 
-function spawn() {
+function spawnSnake() {
   for (let i = 0; i < snake.cells.length; i++) {
     if (i === 0) {
-      CONTEXT.fillStyle = "black";
+      context.fillStyle = "black";
     } else {
-      CONTEXT.fillStyle = "green";
+      context.fillStyle = "green";
     }
-    CONTEXT.fillRect(snake.cells[i].x, snake.cells[i].y, GRID - 1, GRID - 1);
+    context.fillRect(snake.cells[i].x, snake.cells[i].y, GRID - 1, GRID - 1);
   }
 }
 
@@ -53,7 +52,8 @@ function death() {
   apple.x = rand(2, 14) * GRID;
   apple.y = rand(3, 13) * GRID;
   appleCount = 0;
-  countGame++;
+  clearInterval(gameLoop);
+  countGame = true;
 }
 
 function eatApple() {
@@ -80,22 +80,66 @@ function deathAboutYourself() {
 function spawnPic(path, x, y, length, width) {
   let img = new Image();
   img.src = path;
-  CONTEXT.drawImage(img, x, y, length, width);
+  context.drawImage(img, x, y, length, width);
 }
 
 function inputAppleCount() {
-  CURRENT.innerHTML = appleCount;
+  current.innerHTML = appleCount;
 }
 
-function ctrlZ() {
-  document.addEventListener("keydown", function (e) {
-    if ((e.ctrlKey || e.KeyCode === 122) && countGame > 0) {
-      countGame = 0;
-      snake.x = 288;
-      snake.y = 320;
-      loop();
+function ctrlZ(e) {
+  if ((e.ctrlKey || e.KeyCode === 122) && countGame) {
+    countGame = false;
+    snake.x = 288;
+    snake.y = 320;
+    gameLoop = setInterval(loop, 100);
+  }
+}
+
+function checkEdge() {
+  switch (true) {
+    case snake.x < 30:
+      snake.x = snake.x + GRID;
+      death();
+
+    case snake.y < 90:
+      snake.y = snake.y + GRID;
+      death();
+
+    case snake.x > 550:
+      snake.x = snake.x - GRID;
+      death();
+
+    case snake.y > 550:
+      snake.y = snake.y - GRID;
+      death();
+  }
+}
+
+function control(e) {
+  if (!countGame) {
+    switch (e.which) {
+      case 37:
+        snake.dx = -GRID;
+        snake.dy = 0;
+        break;
+
+      case 38:
+        snake.dy = -GRID;
+        snake.dx = 0;
+        break;
+
+      case 39:
+        snake.dx = GRID;
+        snake.dy = 0;
+        break;
+
+      case 40:
+        snake.dy = GRID;
+        snake.dx = 0;
+        break;
     }
-  });
+  }
 }
 
 function rand(min, max) {
@@ -103,86 +147,27 @@ function rand(min, max) {
 }
 
 function loop() {
-  if (countGame > 0) {
-    return;
-  }
-
   spawnPic("assets/img/ground.png", 0, 0, 608, 608);
 
   spawnPic(`assets/img/fruit.png`, apple.x, apple.y, GRID - 1, GRID - 1);
 
-  spawn();
+  spawnSnake();
 
   eatApple();
 
   deathAboutYourself();
 
-  setTimeout(loop, 60);
-
-  if (++count <= 3) {
-    // возврат пустого значения
-    return;
-  }
-  count = 2;
-
   speed();
 
   extension();
 
-  if (snake.x < 30) {
-    snake.x = snake.x + GRID;
-    death();
-  }
-
-  if (snake.y < 90) {
-    snake.y = snake.y + GRID;
-    death();
-  }
-
-  if (snake.x > 550) {
-    snake.x = snake.x - GRID;
-    death();
-  }
-
-  if (snake.y > 550) {
-    snake.y = snake.y - GRID;
-    death();
-  }
+  checkEdge();
 
   inputAppleCount();
 }
 
-// управление
-function control() {
-  document.addEventListener("keydown", function (e) {
-    if (!countGame) {
-      switch (e.which) {
-        case 37:
-          snake.dx = -GRID;
-          snake.dy = 0;
-          break;
+document.addEventListener("keydown", ctrlZ);
 
-        case 38:
-          snake.dy = -GRID;
-          snake.dx = 0;
-          break;
+document.addEventListener("keydown", control);
 
-        case 39:
-          snake.dx = GRID;
-          snake.dy = 0;
-          break;
-
-        case 40:
-          snake.dy = GRID;
-          snake.dx = 0;
-          break;
-      }
-    }
-  });
-}
-
-loop();
-
-control();
-
-ctrlZ();
+gameLoop = setInterval(loop, 100);
