@@ -1,8 +1,8 @@
 const GRID = 32;
 
-let canvas = document.getElementById("game");
-let context = canvas.getContext("2d");
-let current = document.getElementById("appleCount");
+const canvas = document.getElementById("game");
+const context = canvas.getContext("2d");
+const current = document.getElementById("appleCount");
 let appleCount = 0;
 let countGame = false;
 let gameLoop = null;
@@ -83,11 +83,11 @@ function spawnPic(path, x, y, length, width) {
   context.drawImage(img, x, y, length, width);
 }
 
-function inputAppleCount() {
+function drawAppleCount() {
   current.innerHTML = appleCount;
 }
 
-function ctrlZ(e) {
+function restart(e) {
   if ((e.ctrlKey || e.KeyCode === 122) && countGame) {
     countGame = false;
     snake.x = 288;
@@ -166,7 +166,7 @@ function loop() {
   inputAppleCount();
 }
 
-document.addEventListener("keydown", ctrlZ);
+document.addEventListener("keydown", restart);
 
 document.addEventListener("keydown", control);
 
